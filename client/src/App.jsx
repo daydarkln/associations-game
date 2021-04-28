@@ -1,7 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { useCallback, useMemo, useState } from 'react';
 
-function App() {
+function App(props) {
+  const [counter, setCounter] = useState(0);
+  const currentYear = useMemo(() => {
+    console.log(counter);
+    return new Date().getFullYear()
+  }, [counter]);
+
+  const handleClick = useCallback(e => {
+    setCounter(counter + 1);
+    console.log(e.type);
+  }, [props.counter]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +29,9 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleClick}>Send</button>
       </header>
+      <footer>Associations {currentYear}</footer>
     </div>
   );
 }
