@@ -1,0 +1,45 @@
+body{
+  margin: 0;
+  padding: 0;
+ 
+}
+
+#components-layout-demo-fixed .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+  background: rgb(221, 214, 214);
+}
+
+.content-container{
+  padding:12px 24px ;
+  height:100vh;
+}
+
+// .app-wrapper{
+//   display:grid;
+//   height: 100vh;
+//   grid-template-rows: 5vw 1fr 5vw;
+//   grid-template-columns: 2fr 10fr ;
+//   grid-template-areas: 
+//   "h h "
+//   "n c"
+//   "f f";
+// }
+
+// .app-wrapper-content{
+//   grid-area: c;
+//   background-color: rgb(43, 199, 69);
+// }
+
+// .footer{
+//   grid-area: f;
+// }
+
+// .header{
+//   grid-area: h;
+// }
