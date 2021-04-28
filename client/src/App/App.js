@@ -16,18 +16,15 @@ import ContentComponent from "../components/content/ContentComponent";
 function App() {
    return (
       <BrowserRouter>
-         <Layout style={{ height: "100vh" }}>
+         <Layout >
             <HeaderComponent />
             <Layout>
                <AsideMenu />
-               <Layout>
-                  <div className="content-container">
-                     <ContentComponent />
-                  </div>
-
-                  <FooterComponent />
-               </Layout>
+               <div className="content-container">
+                  <ContentComponent />
+               </div>
             </Layout>
+            <FooterComponent />
          </Layout>
       </BrowserRouter>
    );

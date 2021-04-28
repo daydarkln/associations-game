@@ -1,5 +1,11 @@
 .main-content {
    padding: 24;
    margin: 0;
-   min-height: 280;
+  
+}
+
+.main-content-wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }

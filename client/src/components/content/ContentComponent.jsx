@@ -14,7 +14,7 @@ const { Content } = Layout;
 function ContentComponent() {
    return (
       <Content className="main-content">
-         <div className="app-wrapper-content">
+         <div className="main-content-wrapper">
             <Route path="/" component={MainPage} exact />
             <Route path="/current" component={CurrentGame} exact />
             <Route path="/new" component={NewGame} exact />
