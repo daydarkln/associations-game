@@ -14,9 +14,9 @@ function AsideMenu() {
             <Menu.Item key="1">
                <NavLink to="/">Main</NavLink>
             </Menu.Item>
-            <Menu.Item key="2">
+            {/* <Menu.Item key="2">
                <NavLink to="/current">Current Game</NavLink>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="3">
                <NavLink to="/new">New Game</NavLink>
             </Menu.Item>

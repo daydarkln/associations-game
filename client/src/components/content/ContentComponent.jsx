@@ -16,7 +16,7 @@ function ContentComponent() {
       <Content className="main-content">
          <div className="main-content-wrapper">
             <Route path="/" component={MainPage} exact />
-            <Route path="/current" component={CurrentGame} exact />
+            {/* <Route path="/current" component={CurrentGame} exact /> */}
             <Route path="/new" component={NewGame} exact />
             <Route path="/settings" component={SettingsGame} exact />
             <Route path="/rules" component={Rules} exact />
