@@ -1,25 +1,21 @@
+import * as React from 'react';
+import { useMemo } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useCallback, useMemo, useState } from 'react';
 
-function App(props) {
-  const [counter, setCounter] = useState(0);
+function App() {
   const currentYear = useMemo(() => {
-    console.log(counter);
-    return new Date().getFullYear()
-  }, [counter]);
-
-  const handleClick = useCallback(e => {
-    setCounter(counter + 1);
-    console.log(e.type);
-  }, [props.counter]);
+    return new Date().getFullYear();
+  }, []);
 
   return (
-    <div className="App">
+    <div className="App1">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          <code>src/App.js</code>
+          and save to reload.
         </p>
         <a
           className="App-link"
@@ -29,9 +25,11 @@ function App(props) {
         >
           Learn React
         </a>
-        <button onClick={handleClick}>Send</button>
       </header>
-      <footer>Associations {currentYear}</footer>
+      <footer>
+        Associations
+        {currentYear}
+      </footer>
     </div>
   );
 }
