@@ -12,18 +12,15 @@ function AsideMenu() {
       <Sider  >
          <Menu mode="inline" className="aside-container" >
             <Menu.Item key="1">
-               <NavLink to="/">Main</NavLink>
+               <NavLink to="/">New Game</NavLink>
             </Menu.Item>
-            {/* <Menu.Item key="2">
-               <NavLink to="/current">Current Game</NavLink>
-            </Menu.Item> */}
+            <Menu.Item key="2">
+               <NavLink to="/game">Game</NavLink>
+            </Menu.Item>
             <Menu.Item key="3">
-               <NavLink to="/new">New Game</NavLink>
-            </Menu.Item>
-            <Menu.Item key="4">
                <NavLink to="/settings">Settings</NavLink>
             </Menu.Item>
-            <Menu.Item key="5">
+            <Menu.Item key="4">
                <NavLink to="/rules">Rules</NavLink>
             </Menu.Item>
          </Menu>

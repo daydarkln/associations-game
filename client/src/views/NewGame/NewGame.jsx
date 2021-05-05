@@ -1,7 +1,7 @@
 import React from "react";
 import "./newgame.scss"
-import { Input, Space ,Button , Select } from "antd";
-const { Option } = Select;
+import { Input, Space ,Button  } from "antd";
+
 
 
 function NewGame() {
