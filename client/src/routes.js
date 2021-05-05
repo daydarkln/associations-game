@@ -1,4 +1,3 @@
-export const routes = {
-  main: '/',
-  gain: '//'
+export default {
+  main: '/'
 };
