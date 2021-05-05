@@ -66,7 +66,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"husky pre-commit \""
+      "pre-commit": "yarn run precommit"
     }
   }
 }
