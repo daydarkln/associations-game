@@ -21,8 +21,8 @@ function Game() {
 
    const [currentBoard,setCurrentBoard] = useState(null)
    const [currentPlayer,setCurrentPlayer] = useState(null)
+   const [indexItem,setIndexItem] = useState(null)
 
-      console.log(currentBoard,'currentboard',currentPlayer,'currentplayer')
    function dragOverHandler(e){
     e.preventDefault()
     if(e.target.className === "player"){
@@ -46,24 +46,19 @@ function Game() {
   
   function dropHandler(e, team, player){
     e.preventDefault()
-   //  const currentIndexItem = currentBoard.players.indexOf(currentPlayer)
-   //  currentBoard.players.splice(currentIndexItem, 1)
-   //  const underIndexItem =  team.players.indexOf(player)
-   //  team.players.splice(underIndexItem+1,0,currentPlayer)
-   //  setTeams(teams.map(el =>{
-   //    if(el.id === team.id){
-   //      return team
-   //    }
-   //    if(el.id === currentBoard.id){
-   //      return currentBoard
-   //    }
-   //    return el
-   //  }))
+    setIndexItem(team.players.indexOf(player))
   }
   
   function dropCardHandler(e,team){
     e.preventDefault()
-    team.players.push(currentPlayer)
+    if(team.id === currentBoard.id){
+      team.players.splice(indexItem+1,0,currentPlayer)  
+      
+    }else{
+      team.players.push(currentPlayer)
+    }
+    console.log(team.id === currentBoard.id)
+    
     const currentIndexItem = currentBoard.players.indexOf(currentPlayer)
     currentBoard.players.splice(currentIndexItem, 1)
     setTeams(teams.map(el =>{
@@ -87,15 +82,16 @@ function Game() {
                bordered={true}
                onDragOver={(e)=>dragOverHandler(e)}
                onDrop = {(e)=>dropCardHandler(e,team)}
+               
+                     onDragEnd={(e)=>dragEndHandler(e)}
+                     onDragLeave={(e) => dragLeaveHandler(e)}
             >
                {team.players.map((player) => (
                   <p
                      key={player.id}
                      className="player"
                      draggable={true}
-                     onDragOver={(e) => dragOverHandler(e)}
-                     onDragEnd={(e)=>dragEndHandler(e)}
-                     onDragLeave={(e) => dragLeaveHandler(e)}
+                     
                      onDragStart={(e) => dragStartHandler(e, team, player)}
                      onDrop={(e) => dropHandler(e, team, player)}
                   >
