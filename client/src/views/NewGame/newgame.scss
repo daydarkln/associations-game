@@ -1,6 +1,5 @@
 .container-body {
-
-  margin:20px;
+  margin: 20px;
 }
 
 .input-width {
@@ -15,8 +14,13 @@
 
 .item {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
+  padding:5px 10px;
+  margin: 20px 0;
+  min-width: 200px;
+
   &-el {
     font-size: 25px;
     margin-right: 10px;
@@ -34,4 +38,3 @@
 h3 {
   text-align: center;
 }
-

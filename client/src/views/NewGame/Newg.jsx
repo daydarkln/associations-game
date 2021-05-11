@@ -20,11 +20,11 @@ function Newg() {
   };
 
   const removeTeam = i => {
-    setTeam(prev => prev.filter((item, idx) => item[i] !== item[idx]));
+    setTeam(prev => prev.filter(item => item.id !== i));
   };
 
   const removeMember = i => {
-    setMember(prev => prev.filter((item, idx) => item[i] !== item[idx]));
+    setMember(prev => prev.filter(item => item.id !== i));
   };
 
   return (
@@ -35,6 +35,7 @@ function Newg() {
             <InputValue
               addItem={addTeam}
               placeholderValue="Введите название команды"
+              name="team"
             />
           )}
           <ItemMap
@@ -50,6 +51,7 @@ function Newg() {
             <InputValue
               addItem={addMember}
               placeholderValue="Введите имена игроков"
+              name="member"
             />
           )}
           <ItemMap
@@ -59,7 +61,7 @@ function Newg() {
           />
         </div>
       )}
-      {count === 3 && <Game />}
+      {count === 3 && <Game playersName={member} />}
 
       <Button disabled={count < 2} onClick={() => setCount(count - 1)}>
         Prev

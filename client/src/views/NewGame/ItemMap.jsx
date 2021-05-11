@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { CloseCircleFilled } from '@ant-design/icons';
+import { Card } from 'antd';
 import './newgame.scss';
 
 function ItemMap({ array, removeElement, title }) {
@@ -11,15 +12,13 @@ function ItemMap({ array, removeElement, title }) {
   return (
     <>
       {array.length > 0 && <h3>{title}</h3>}
-      {array.map((el, i) => (
-        <div className="item">
-          <div className="item-el" key={`${i}__${el}`}>
-            {el}
-          </div>
+      {array.map(({ item, id }) => (
+        <div className="item" key={id}>
+          <div className="item-el">{item}</div>
 
           <CloseCircleFilled
             className="item-btn"
-            onClick={e => removeItemValue(e, i)}
+            onClick={e => removeItemValue(e, id)}
           />
         </div>
       ))}

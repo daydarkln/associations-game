@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'antd';
 import './game.scss';
 
-function Game() {
+function Game({ playersName }) {
   const [teams, setTeams] = useState([
     { id: 1, title: 'First team', players: [] },
-    {
-      id: 2,
-      title: 'All players',
-      players: [
-        { id: 12, name: 'Elena' },
-        { id: 23, name: 'Sasha' },
-        { id: 34, name: 'Zeek' },
-        { id: 45, name: 'Connie' },
-        { id: 56, name: 'Annie' }
-      ]
-    },
     { id: 3, title: 'Second team', players: [] }
   ]);
 
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [indexItem, setIndexItem] = useState(null);
+
+  useEffect(() => {
+    const boardUsers = {
+      id: 2,
+      title: 'Members',
+      players: playersName
+    };
+    setTeams(prev => [...prev, boardUsers]);
+  }, [playersName]);
 
   function dragOverHandler(e) {
     e.preventDefault();
@@ -70,6 +68,8 @@ function Game() {
       })
     );
   }
+
+  console.log(teams);
   return (
     <div className="boards">
       {teams.map(team => (
@@ -83,17 +83,18 @@ function Game() {
           onDragEnd={e => dragEndHandler(e)}
           onDragLeave={e => dragLeaveHandler(e)}
         >
-          {team.players.map(player => (
-            <p
-              key={player.id}
-              className="player"
-              draggable
-              onDragStart={e => dragStartHandler(e, team, player)}
-              onDrop={e => dropHandler(e, team, player)}
-            >
-              {player.name}
-            </p>
-          ))}
+          {team.players &&
+            team.players.map(player => (
+              <p
+                key={player.id}
+                className="player"
+                draggable
+                onDragStart={e => dragStartHandler(e, team, player)}
+                onDrop={e => dropHandler(e, team, player)}
+              >
+                {player.item}
+              </p>
+            ))}
         </Card>
       ))}
     </div>
