@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'antd';
 import './game.scss';
 
-function Game({ playersName }) {
+function Game({ playersName, getTwoTeamMembers }) {
   const [teams, setTeams] = useState([
     { id: 1, title: 'First team', players: [] },
-    { id: 3, title: 'Second team', players: [] }
+    { id: 2, title: 'Second team', players: [] }
   ]);
 
   const [currentBoard, setCurrentBoard] = useState(null);
@@ -14,12 +14,16 @@ function Game({ playersName }) {
 
   useEffect(() => {
     const boardUsers = {
-      id: 2,
+      id: 3,
       title: 'Members',
       players: playersName
     };
     setTeams(prev => [...prev, boardUsers]);
   }, [playersName]);
+
+  if (teams.slice(-1).length === 0) {
+    getTwoTeamMembers(teams.slice(0, 2));
+  }
 
   function dragOverHandler(e) {
     e.preventDefault();
@@ -69,7 +73,6 @@ function Game({ playersName }) {
     );
   }
 
-  console.log(teams);
   return (
     <div className="boards">
       {teams.map(team => (

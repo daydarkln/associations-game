@@ -1,92 +1,84 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
-import { Input, Space, Button } from 'antd';
+import React, { useState } from 'react';
+import { Space, Button } from 'antd';
 import './newgame.scss';
+import InputValue from './InputValue';
+import ItemMap from './ItemMap';
+import Game from '../Game/Game';
+import TableMenu from '../../components/table-menu/TableMenu';
 
 function NewGame() {
-  const [forms, setForms] = React.useState([]);
+  const [count, setCount] = useState(1);
+  const [team, setTeam] = useState([]);
+  const [member, setMember] = useState([]);
+  const [twoTeamMember, setTwoTeamMember] = useState();
 
-  const prevIsValid = () => {
-    if (forms.length === 0) {
-      return true;
-    }
-    const someEpmty = forms.some(
-      item => item.Username === '' || item.Team === ''
-    );
-
-    return !someEpmty;
+  const addTeam = x => {
+    setTeam([...team, x]);
   };
 
-  const handleClick = e => {
-    e.preventDefault();
-    const inputState = {
-      Username: '',
-      Team: ''
-    };
-    if (prevIsValid()) {
-      setForms(prev => [...prev, inputState]);
-    }
+  const addMember = y => {
+    setMember([...member, y]);
   };
 
-  const onChangeInput = (idx, e) => {
-    e.preventDefault();
-
-    setForms(prev => {
-      return prev.map((item, i) => {
-        if (i !== idx) {
-          return item;
-        }
-        return {
-          ...item,
-          [e.target.name]: e.target.value
-        };
-      });
-    });
+  const removeTeam = i => {
+    setTeam(prev => prev.filter(item => item.id !== i));
   };
 
-  const removeUser = (e, idx) => {
-    e.preventDefault();
-    setForms(prev => prev.filter(item => item !== prev[idx]));
+  const removeMember = i => {
+    setMember(prev => prev.filter(item => item.id !== i));
+  };
+
+  const getTwoTeamMembers = members => {
+    setTwoTeamMember(members);
+    console.log(members);
   };
 
   return (
-    <Space direction="vertical">
-      {forms.map((el, i) => (
-        <div type="primary" key={`${el}__${i}`}>
-          {`Member ${el.Username} in Team ${el.Team} `}
+    <Space direction="vertical" className="container-body">
+      {count === 1 && (
+        <div>
+          {team.length < 2 && (
+            <InputValue
+              addItem={addTeam}
+              placeholderValue="Введите название команды"
+              name="team"
+            />
+          )}
+          <ItemMap
+            removeElement={removeTeam}
+            array={team}
+            title="Название команды"
+          />
         </div>
-      ))}
-      {forms.map((el, idx) => (
-        <Space key={`item__${idx}`}>
-          <div className="input-width">
-            <Input
-              type="text"
-              name="Username"
-              placeholder="Enter new user"
-              value={el.Username}
-              onChange={e => onChangeInput(idx, e)}
+      )}
+      {count === 2 && (
+        <div>
+          {team && (
+            <InputValue
+              addItem={addMember}
+              placeholderValue="Введите имена игроков"
+              name="member"
             />
-          </div>
-          <div className="input-width">
-            <Input
-              type="text"
-              name="Team"
-              placeholder="Choose team"
-              value={el.Team}
-              onChange={e => onChangeInput(idx, e)}
-            />
-          </div>
+          )}
+          <ItemMap
+            removeElement={removeMember}
+            array={member}
+            title="Список игроков"
+          />
+        </div>
+      )}
+      {count === 3 && (
+        <Game playersName={member} getTwoTeamMembers={getTwoTeamMembers} />
+      )}
+      {count === 4 && <TableMenu twoTeamMember={twoTeamMember} />}
 
-          <Button onClick={e => removeUser(e, idx)}>x</Button>
-        </Space>
-      ))}
-
-      <form>
-        <Button disabled={!prevIsValid()} onClick={e => handleClick(e)}>
-          Add New User
-        </Button>
-      </form>
+      <Button disabled={count < 2} onClick={() => setCount(count - 1)}>
+        Prev
+      </Button>
+      <Button disabled={count > 3} onClick={() => setCount(count + 1)}>
+        Next
+      </Button>
     </Space>
   );
 }

@@ -5,9 +5,8 @@ import { Layout } from 'antd';
 
 import Rules from '../../views/Rules/Rules';
 import SettingsGame from '../../views/SettingsGame/SettingsGame';
-import NewGame from '../../views/NewGame/NewGame';
-import Newg from '../../views/NewGame/Newg';
 import Game from '../../views/Game/Game';
+import NewGame from '../../views/NewGame/NewGame';
 import './content.scss';
 
 const { Content } = Layout;
@@ -17,7 +16,6 @@ function ContentComponent() {
     <Content className="main-content">
       <div className="main-content-wrapper">
         <Route path="/" component={NewGame} exact />
-        <Route path="/newg" component={Newg} exact />
         <Route path="/game" component={Game} exact />
         <Route path="/settings" component={SettingsGame} exact />
         <Route path="/rules" component={Rules} exact />
