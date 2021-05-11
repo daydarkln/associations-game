@@ -1,12 +1,8 @@
-import React from 'react'
-import "./rules.scss"
+import React from 'react';
+import './rules.scss';
 
 function Rules() {
-  return (
-    <div>
-      Rules
-    </div>
-  )
+  return <div>Rules</div>;
 }
 
-export default Rules
+export default Rules;

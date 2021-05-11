@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import newGameReducer from './newGameReducer'
+import { combineReducers } from 'redux';
+import newGameReducer from './newGameReducer';
 
-const rootReducer = combineReducers({newGameReducer})
+const rootReducer = combineReducers({ newGameReducer });
 
-export default rootReducer
+export default rootReducer;
