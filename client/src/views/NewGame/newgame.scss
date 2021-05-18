@@ -1,0 +1,40 @@
+.container-body {
+  margin: 20px;
+}
+
+.input-width {
+  width: 300px;
+}
+
+.button-sbm {
+  text-align: center;
+  margin-top: 10px;
+  float: right;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding:5px 10px;
+  margin: 20px 0;
+  min-width: 200px;
+
+  &-el {
+    font-size: 25px;
+    margin-right: 10px;
+  }
+  &-btn {
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.4;
+  }
+  &-btn:hover {
+    opacity: 1;
+  }
+}
+
+h3 {
+  text-align: center;
+}
